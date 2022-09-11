@@ -1,0 +1,210 @@
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: #fafafa;
+        --foreground: #6c7680;
+        --black: #000000;
+        --brightBlack: #686868;
+        --blue: #3199e1;
+        --brightBlue: #399ee6;
+        --cyan: #46ba94;
+        --brightCyan: #4cbf99;
+        --green: #99bf4d;
+        --brightGreen: #86b300;
+        --purple: #9e75c7;
+        --brightPurple: #a37acc;
+        --red: #ea6c6d;
+        --brightRed: #f07171;
+        --yellow: #eca944;
+        --brightYellow: #f2ae49;
+        --white: #e6e6e6;
+        --brightWhite: #cfcfcf;
+    }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+    :root {
+        --background: #1f2430;
+        --foreground: #cbccc6;
+
+        --white: #191e2a;
+        --brightWhite: #686868;
+        --blue: #6dcbfa;
+        --brightBlue: #73d0ff;
+        --green: #a6cc70;
+        --brightGreen: #bae67e;
+        --cyan: #90e1c6;
+        --brightCyan: #95e6cb;
+        --purple: #cfbafa;
+        --brightPurple: #d4bfff;
+        --red: #ed8274;
+        --brightRed: #f28779;
+        --black: #c7c7c7;
+        --brightBlack: #ffffff;
+        --yellow: #fad07b;
+        --brightYellow: #ffd580;
+    }
+}
+
+* {
+    font-family: "JetBrains mono", monospace;
+    color: var(--foreground);
+}
+
+html,
+body {
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+body:not(.js) .yesscript {
+    display: none;
+}
+
+.hero {
+    display: flex;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    margin: .25rem 0;
+}
+
+.title-color {
+    color: var(--blue);
+}
+
+.social {
+    text-align: center;
+    opacity: 0%;
+    margin-bottom: .5rem;
+}
+
+.social.show,
+body:not(.js) .social {
+    transition: 500ms ease;
+    opacity: 100%;
+}
+
+a {
+    color: var(--yellow);
+}
+
+.scroll-hint>svg {
+    animation-name: scroll;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    width: 30px;
+    stroke: var(--foreground);
+}
+
+.scroll-hint {
+    opacity: 0;
+    width: 30px;
+    position: absolute;
+    top: 80%;
+}
+
+.scroll-hint.show,
+body:not(.js) .scroll-hint {
+    transition: 1s ease;
+    opacity: 1;
+}
+
+.content {
+    padding: 0 20%;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 70%;
+        height: 27px;
+    }
+
+    50% {
+        opacity: 30%;
+        height: 33px;
+    }
+
+    100% {
+        opacity: 70%;
+        height: 27px;
+    }
+}
+
+.project {
+    border: 1px solid var(--brightWhite);
+    border-radius: .5rem;
+    margin: 1rem 0;
+    padding: .5rem;
+}
+
+.project:hover {
+    border: 1px solid var(--cyan);
+    transition: .2s;
+}
+
+.project h3 {
+    margin: 0 0 0 0;
+    color: var(--green);
+}
+
+.project p {
+    margin: 0.5rem;
+}
+
+.project a {
+    color: var(--cyan)
+}
+
+.small-title {
+    margin: 2rem 0 0 0;
+    color: var(--red);
+}
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background-color: #8884;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: var(--blue);
+}
+
+ul {
+    list-style-type: disc;
+}
+
+::marker {
+    color: var(--red);
+}
+
+.footer {
+    margin-top: 100px;
+    display: block;
+    width: 100%;
+    font-size: 11px;
+    text-align: center;
+    padding: 5px 0;
+    background-color: var(--white);
+}

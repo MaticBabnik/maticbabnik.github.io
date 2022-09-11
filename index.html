@@ -9,46 +9,139 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="autism.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer async src="main.js"></script>
     <title>Matic Babnik</title>
 </head>
 
 <body>
     <div class="hero" id="hero">
-        <h1 class="typewriter" data-text="Matic Babnik">_</h1>
-        <div id="social">
-            <a href="contact.html">Mail/Discord</a>
+        <noscript>
+            <h1 class="typewriter title-color">Matic Babnik</h1>
+        </noscript>
+        <h1 class="yesscript typewriter" data-text="Matic Babnik"></h1>
+        <div class="social">
             <a href="https://github.com/MaticBabnik">Github</a>
-            <a href="https://www.instagram.com/m_babnik/">Instagram</a>
+            <a href="https://matrix.to/#/@maticbabnik:matrix.org">Matrix</a>
+        </div>
+        <div class="social">
+            matic.babnik@gmail.com
+            <br>
+            Matic?#2038
         </div>
         <div class="scroll-hint">
-            <img src="assets/Down.svg"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="199" height="185" fill="none" viewBox="0 0 199 185">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="24"
+                    d="M187 116.965l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 116.965m175-52.483l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 64.482M187 12l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 12" />
+            </svg>
         </div>
     </div>
     <div class="content">
         <h2 class="small-title">About me</h2>
         <p>
-            I am a passionate coder from Slovenia. I'm mostly interested in web, but I have some experience with embedded and desktop apps. Currently a student @ <a href="https://vegova.si">Vegova</a>
+            I do stuff sometimes. Mostly in JS and Vue, sometimes C# and C++ too.
+            Currently a student at <a href="https://vegova.si">Vegova</a>.
         </p>
         <h2 class="small-title">Projects</h2>
+        <div class="projects">
+
+        </div>
+        <div class="project">
+            <h3>Sync</h3>
+            <p class="description">
+                A (somewhat) shitty way to sync videos with your friends. Currently supports youtube, simple hosted
+                video files and hosted MPEG-DASH.
+            </p>
+            <a href="https://github.com/MaticBabnik/shitty-sync">Source</a> | <a href="https://sync.si/">Site</a>
+        </div>
+        <div class="project">
+            <h3>Weebify</h3>
+            <p class="description">
+                An anime "streaming" site.
+            </p>
+            <a href="https://github.com/fubuki-fanclub/weebify-v0">Source (Website)</a> | <a
+                href="https://github.com/MaticBabnik/weebify-encoders">Source (encoders)</a> | <a
+                href="https://weebify.femboy.si">Site</a>
+        </div>
+        <div class="project">
+            <h3>Discord OS RPC</h3>
+            <p class="description">
+                Shows your OS as game activity on Discord.
+            </p>
+            <a href="https://github.com/MaticBabnik/discord-os-rpc">Source</a>
+        </div>
+        <div class="project">
+            <h3>Easistent timetable scaper</h3>
+            <p class="description">
+                eAsistent public timetable scraper/graphql API.
+            </p>
+            <a href="https://github.com/MaticBabnik/easistent-tt">Source</a> | <a
+                href="https://vegova.sync.si/graphiql">Vegova instance</a>
+        </div>
+        <div class="project">
+            <h3>FirstFM</h3>
+            <p class="description">
+                Work-in-progress LastFM scrobbler thing for linux. Currently just a MPRIS client.
+            </p>
+            <a href="https://github.com/MaticBabnik/FirstFM">Source</a>
+        </div>
+        <div class="project">
+            <h3>fincord</h3>
+            <p class="description">
+                Jellyfin discord bot aimed at small friend groups.
+            </p>
+            <a href="https://github.com/MaticBabnik/fincord">Source</a>
+        </div>
+        <div class="project">
+            <h3>osux</h3>
+            <p class="description">
+                The worst Osu! you have ever seen. No sliders, no spinners, no mods, bad scoring system...
+                It does have segmentation faults though🙃
+            </p>
+            <a href="https://github.com/MaticBabnik/osux">Source</a>
+        </div>
+        <div class="project">
+            <h3>timetable-vue</h3>
+            <p class="description">
+                Frontend for easistent-tt.
+            </p>
+            <a href="https://github.com/MaticBabnik/timetable-vue">Source</a> | <a href="https://v.sync.si">Vegova
+                instance</a>
+        </div>
+        <div class="project">
+            <h3>eAsistent+</h3>
+            <p class="description">Chrome extension for easistent.com. Enables some of the plus features
+                for free, adds dark mode, a simpler home page and some joke features.</p>
+            <a href="git@github.com:fubuki-fanclub/ea-sux.git">Source</a> | <a
+                href="https://chrome.google.com/webstore/detail/easistent%20/kghgoadkgnipnenlcjamhmiodhohadpp?hl=sl&authuser=0">Chrome
+                web store</a>
+        </div>
+        <h2 class="small-title">Services</h2>
         <p>
-            A list of some things I am/was working on:
-            <ul>
-                <li><a href="https://github.com/MaticBabnik/2k48">2k48</a> - a terminal version of 2048 written in C# [done] </li>
-                <li><a href="https://github.com/MaticBabnik/YeeTKL">Custom mech keypad</a> [stuck] </li>
-                <li><a href="https://github.com/fubuki-fanclub/WeebCli">WeebCli</a> - CLI that makes reencoding anime EZ [needs work]</li>
-                <li><a href="https://github.com/fubuki-fanclub/vtuber-status">Vtuber-status</a> - webpage that tracks the status of all hololive YT channels [done?]</li>
-                <li><a href="https://github.com/fubuki-fanclub/shitty-sync">Shitty-sync</a> - a (not so) shitty way to group watch anime [working]</li>
-                <li>a simple c# 2d game enine [private 4 now]</li>
-            </ul>
+            Some of the things I host
+        <ul>
+            <li><a href="https://sync.si">Sync</a> - watch videos with your friends</li>
+            <li><a href="https://ntr.sync.si">Nitter</a> - twitter proxy</li>
+            <li><a href="https://weebify.femboy.si">Weebify v0</a> - anime thing (early alpha)</li>
+            <li><a href="https://v.sync.si/">Vegova timetable</a> - a better timetable viewer for vegova</li>
+            <li><a href="https://v.sync.si/">Vegova timetable API</a> - GraphQL API</li>
+            <li><a href="https://uptime.sync.si/status/all">Uptime kuma</a> - status</li>
+        </ul>
         </p>
-        <h2 class="small-title">Random stuff & things</h2>
         <p>
-            <a href="https://anilist.co/user/Matic/animelist">Anime I've seen/am watching</a>
+        <h2 class="small-title">Cool people</h2>
+        <ul>
+            <li><a href="https://xn--ijanec-9jb.eu/">šijanec.eu</a></li>
+            <li><a href="https://ass.si/">ass.si</a></li>
+            <li><a href="https://aikenahac.com/">aikenahac.com</a></li>
+            <li><a href="https://blog.skret.net/">blog.skret.net</a></li>
+            <li><a href="https://zigakralj.com/">zigakralj.com</a></li>
+            <li><a href="https://me.neet.si/">me.neet.si</a></li>
+        </ul>
         </p>
     </div>
-    <span class="footer">&lt;Insert generic made with love message&gt;</span>
-    <script src="main.js"></script>
+
+    <span class="footer">Updated: Sept. 2022 | Theme: Ayu | Font: JetBrains Mono</span>
 </body>
 
 </html>

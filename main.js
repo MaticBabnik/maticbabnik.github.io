@@ -1,5 +1,7 @@
+document.body.classList.add('js');
+
 let typewriter = document.querySelector('h1.typewriter')
-let social = document.querySelector('#social');
+let socials = [...document.querySelectorAll('.social')];
 let scroll = document.querySelector('.scroll-hint')
 
 const leetRegexArray = [
@@ -18,16 +20,14 @@ function makeLeet(str) {
 }
 
 async function delay(x) {
-    return new Promise(r=>setTimeout(r,x))
+    return new Promise(r => setTimeout(r, x))
 }
-
-//console.log(makeLeet('Matic Babnik'))
 
 async function anim() {
     //type out the leet text
     for (let i = 0; i < typewriter.dataset.text.length; i++) {
         typewriter.innerHTML = `<span class="title-color">${makeLeet(typewriter.dataset.text.substr(0, i))}</span>_`;
-        await delay(Math.random()* 100 + 100);
+        await delay(Math.random() * 100 + 100);
     }
 
     let text = makeLeet(typewriter.dataset.text)
@@ -35,7 +35,7 @@ async function anim() {
 
     //"decrypt" the leet text
     for (leet of leetRegexArray) {
-        text=text.replace(leet.lr,leet.normal)
+        text = text.replace(leet.lr, leet.normal)
         typewriter.innerHTML = `<span class="title-color">${text}</span>`;
         await delay(200);
     }
@@ -43,7 +43,7 @@ async function anim() {
 
     //show the links and scroll hint
     await delay(200)
-    social.classList.add('show')
+    socials.forEach(x => x.classList.add('show'));
     await delay(500)
     scroll.classList.add('show');
 
