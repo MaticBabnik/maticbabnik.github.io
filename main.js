@@ -27,7 +27,7 @@ async function anim() {
     //type out the leet text
     for (let i = 0; i < typewriter.dataset.text.length; i++) {
         typewriter.innerHTML = `<span class="title-color">${makeLeet(typewriter.dataset.text.substr(0, i))}</span>_`;
-        await delay(Math.random() * 100 + 100);
+        await delay(Math.random() * 20 + 100);
     }
 
     let text = makeLeet(typewriter.dataset.text)
@@ -37,14 +37,14 @@ async function anim() {
     for (leet of leetRegexArray) {
         text = text.replace(leet.lr, leet.normal)
         typewriter.innerHTML = `<span class="title-color">${text}</span>`;
-        await delay(200);
+        await delay(50);
     }
     typewriter.innerHTML = `<span class="title-color">${typewriter.dataset.text}</span>`;
 
     //show the links and scroll hint
-    await delay(200)
+    await delay(100)
     socials.forEach(x => x.classList.add('show'));
-    await delay(500)
+    await delay(300)
     scroll.classList.add('show');
 
 }

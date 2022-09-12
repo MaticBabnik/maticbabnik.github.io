@@ -126,6 +126,12 @@ body:not(.js) .scroll-hint {
     padding: 0 20%;
 }
 
+@media only screen and (max-width: 25rem) {
+    .content {
+        padding: 0 2rem;
+    }
+}
+
 @keyframes scroll {
     0% {
         opacity: 70%;
