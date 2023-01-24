@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Metadata-->
-    <link rel="icon" type="image/png" href="favicon.ico" />
     <title>Matic Babnik</title>
+    <link rel="icon" href="favicon.svg" />
     <meta name="description" content="My homepage. I do stuff sometimes. Mostly in JS and Vue, sometimes C# and C++ too.
     Currently a student at Vegova.">
     <meta property="og:description" content="My homepage. I do stuff sometimes. Mostly in JS and Vue, sometimes C# and C++ too.
@@ -38,7 +38,7 @@
             <a href="https://matrix.to/#/@maticbabnik:matrix.org">Matrix</a>
         </div>
         <div class="social">
-            matic.babnik@gmail.com
+            matic@babnik.io
             <br>
             Matic?#2038
         </div>
@@ -49,86 +49,101 @@
             </svg>
         </div>
     </div>
-    <div class="content">
-        <h2 class="small-title">About me</h2>
+    <div id="content">
         <p>
-            I do stuff sometimes. Mostly in JS and Vue, sometimes C# and C++ too.
-            Currently a student at <a href="https://www.vegova.si">Vegova</a>.
+            ~19 years old <br>
+            Currently a student at <a href="https://vegova.si">Vegova</a>.
         </p>
+        <h2 class="small-title">Favorite ${x}</h2>
+        <pre>
+          <span class="less">Number</span>: NaN
+            <span class="less">Food</span>: Pizza
+       <span class="less">Languages</span>: TS, JS, (C#)
+       <span class="less">Framework</span>: Vue
+<span class="less">Operating System</span>: Linux (Arch for desktop, Rocky/Alma for servers)
+        </pre>
+
         <h2 class="small-title">Projects</h2>
         <div class="projects">
+            <div class="project">
+                <h3>Sync</h3>
+                <p class="description">
+                    A (somewhat) shitty way to sync videos with your friends. Currently supports YouTube, simple hosted
+                    video files and MPEG-DASH.
+                </p>
+                <a href="https://github.com/MaticBabnik/shitty-sync">Repo</a>
+                |
+                <a href="https://sync.si/">Site</a>
+            </div>
+            <div class="project">
+                <h3>Weebify</h3>
+                <p class="description">
+                    An anime "streaming" site.
+                </p>
+                <a href="https://github.com/Serial-Experiments-Weebify">Github</a>
+                |
+                <a href="https://weebify.femboy.si">Site</a>
+            </div>
+            <div class="project">
+                <h3>Easistent timetable scaper</h3>
+                <p class="description">
+                    eAsistent public timetable scraper/graphql API.
+                </p>
+                <a href="https://github.com/MaticBabnik/easistent-tt">Repo</a>
+                |
+                <a href="https://vegova.sync.si/graphiql">API (V2)</a>
+                |
+                <a href="https://vegova.sync.si/graphiql">API (V3)</a>
+            </div>
+            <div class="project">
+                <h3>timetable-vue</h3>
+                <p class="description">
+                    Frontend for easistent-tt.
+                </p>
+                <a href="https://github.com/MaticBabnik/timetable-vue">Repo</a> | <a href="https://v.sync.si">Vegova
+                    instance</a>
+            </div>
+            <div class="project">
+                <h3>WTRChamp</h3>
+                <p class="description">
+                    Web Trombone Champ. Written in TS, using Vue for menus.
+                </p>
+                <a href="https://github.com/MaticBabnik/WTRChamp">Repo</a>
+                |
+                <a href="https://wtr.babnik.io">Game</a>
+            </div>
+            <div class="project">
+                <h3>Bad UEFI</h3>
+                <p class="description">
+                    Scuffed UEFI video (bad apple) player written in rust.
+                </p>
+                <a href="https://github.com/MaticBabnik/bad-uefi">Repo</a>
+            </div>
+            <div class="project">
+                <h3>Kek framework</h3>
+                <p class="description">
+                    A simple ESP32 Web dashboard framework, Suprisingly fits a Vue frontend on a microcontroller.
+                </p>
+                <a href="https://github.com/MaticBabnik/kek-framework">Repo</a>
+            </div>
+            <div class="project">
+                <h3>oSux</h3>
+                <p class="description">
+                    The worst Osu! you have ever seen. No sliders, no spinners, no mods, bad scoring system...
+                    It does have segmentation faults though🙃
+                </p>
+                <a href="https://github.com/MaticBabnik/osux">Repo</a>
+            </div>
+            <div class="project">
+                <h3>eAsistent+</h3>
+                <p class="description">Chrome extension for easistent.com. Enables some of the plus features
+                    for free, adds dark mode, a simpler home page and some joke features.</p>
+                <a href="https://github.com/fubuki-fanclub/ea-sux">Repo</a> | <a
+                    href="https://chrome.google.com/webstore/detail/easistent%20/kghgoadkgnipnenlcjamhmiodhohadpp?hl=sl&authuser=0">Install
+                    (Chrome)</a>
+            </div>
+        </div>
 
-        </div>
-        <div class="project">
-            <h3>Sync</h3>
-            <p class="description">
-                A (somewhat) shitty way to sync videos with your friends. Currently supports youtube, simple hosted
-                video files and hosted MPEG-DASH.
-            </p>
-            <a href="https://github.com/MaticBabnik/shitty-sync">Source</a> | <a href="https://sync.si/">Site</a>
-        </div>
-        <div class="project">
-            <h3>Weebify</h3>
-            <p class="description">
-                An anime "streaming" site.
-            </p>
-            <a href="https://github.com/fubuki-fanclub/weebify-v0">Source (Website)</a> | <a
-                href="https://github.com/MaticBabnik/weebify-encoders">Source (encoders)</a> | <a
-                href="https://weebify.femboy.si">Site</a>
-        </div>
-        <div class="project">
-            <h3>Discord OS RPC</h3>
-            <p class="description">
-                Shows your OS as game activity on Discord.
-            </p>
-            <a href="https://github.com/MaticBabnik/discord-os-rpc">Source</a>
-        </div>
-        <div class="project">
-            <h3>Easistent timetable scaper</h3>
-            <p class="description">
-                eAsistent public timetable scraper/graphql API.
-            </p>
-            <a href="https://github.com/MaticBabnik/easistent-tt">Source</a> | <a
-                href="https://vegova.sync.si/graphiql">Vegova instance</a>
-        </div>
-        <div class="project">
-            <h3>FirstFM</h3>
-            <p class="description">
-                Work-in-progress LastFM scrobbler thing for linux. Currently just a MPRIS client.
-            </p>
-            <a href="https://github.com/MaticBabnik/FirstFM">Source</a>
-        </div>
-        <div class="project">
-            <h3>fincord</h3>
-            <p class="description">
-                Jellyfin discord bot aimed at small friend groups.
-            </p>
-            <a href="https://github.com/MaticBabnik/fincord">Source</a>
-        </div>
-        <div class="project">
-            <h3>osux</h3>
-            <p class="description">
-                The worst Osu! you have ever seen. No sliders, no spinners, no mods, bad scoring system...
-                It does have segmentation faults though🙃
-            </p>
-            <a href="https://github.com/MaticBabnik/osux">Source</a>
-        </div>
-        <div class="project">
-            <h3>timetable-vue</h3>
-            <p class="description">
-                Frontend for easistent-tt.
-            </p>
-            <a href="https://github.com/MaticBabnik/timetable-vue">Source</a> | <a href="https://v.sync.si">Vegova
-                instance</a>
-        </div>
-        <div class="project">
-            <h3>eAsistent+</h3>
-            <p class="description">Chrome extension for easistent.com. Enables some of the plus features
-                for free, adds dark mode, a simpler home page and some joke features.</p>
-            <a href="git@github.com:fubuki-fanclub/ea-sux.git">Source</a> | <a
-                href="https://chrome.google.com/webstore/detail/easistent%20/kghgoadkgnipnenlcjamhmiodhohadpp?hl=sl&authuser=0">Chrome
-                web store</a>
-        </div>
         <h2 class="small-title">Services</h2>
         <p>
             Some of the things I host
@@ -137,7 +152,6 @@
             <li><a href="https://ntr.sync.si">Nitter</a> - twitter proxy</li>
             <li><a href="https://weebify.femboy.si">Weebify v0</a> - anime thing (early alpha)</li>
             <li><a href="https://v.sync.si/">Vegova timetable</a> - a better timetable viewer for vegova</li>
-            <li><a href="https://v.sync.si/">Vegova timetable API</a> - GraphQL API</li>
             <li><a href="https://uptime.sync.si/status/all">Uptime kuma</a> - status</li>
         </ul>
         </p>
@@ -154,7 +168,7 @@
         </p>
     </div>
 
-    <span class="footer">Updated: Sept. 2022 | Theme: Ayu | Font: JetBrains Mono</span>
+    <span class="footer">Updated: Jan. 2023 | Theme: Ayu | Font: JetBrains Mono</span>
 </body>
 
 </html>

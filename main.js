@@ -1,8 +1,9 @@
 document.body.classList.add('js');
 
-let typewriter = document.querySelector('h1.typewriter')
-let socials = [...document.querySelectorAll('.social')];
-let scroll = document.querySelector('.scroll-hint')
+const typewriter = document.querySelector('h1.typewriter')
+const socials = [...document.querySelectorAll('.social')];
+const scroll = document.querySelector('.scroll-hint')
+const content = document.querySelector('#content');
 
 const leetRegexArray = [
     { nr: /o/gi, normal: 'o', lr: /0/g, leet: '0' },
@@ -49,4 +50,7 @@ async function anim() {
 
 }
 
+scroll.addEventListener('click', () => {
+    content.scrollIntoView({ behavior: 'smooth' })
+});
 anim();
