@@ -217,3 +217,7 @@ ul {
     padding: 5px 0;
     background-color: var(--white);
 }
+
+.break {
+    white-space: break-spaces;
+}
