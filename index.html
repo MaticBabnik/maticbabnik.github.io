@@ -1,200 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--Metadata-->
-        <title>Matic Babnik</title>
-        <link rel="icon" href="favicon.svg" />
-        <meta property="og:title" content="Matic Babnik" />
-        <meta property="og:type" content="website" />
-        <meta name="theme-color" content="#3199e1" />
-        <!--Scripts and styles-->
-        <link rel="stylesheet" href="style.css" />
-        <script defer async src="main.js"></script>
-        <!--Google fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
-            as="style"
-            onload="this.onload=null;this.rel='stylesheet'"
-        />
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Metadata-->
+    <title>Matic Babnik</title>
+    <link rel="icon" href="favicon.svg" />
+    <meta property="og:title" content="Matic Babnik" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#3199e1" />
+    <!--Scripts and styles-->
+    <link rel="stylesheet" href="style.css" />
+    <script defer async src="main.js"></script>
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,500&family=Roboto:wght@100&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <div class="hero" id="hero">
+
         <noscript>
-            <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
-            />
+            <h1 class="typewriter title-color">Matic Babnik</h1>
         </noscript>
-    </head>
-
-    <body>
-        <div class="hero" id="hero">
-            <noscript>
-                <h1 class="typewriter title-color">Matic Babnik</h1>
-            </noscript>
-            <h1 class="yesscript typewriter" data-text="Matic Babnik"></h1>
-            <div class="social">
-                <a href="https://github.com/MaticBabnik">Github</a>
-                <a href="https://matrix.to/#/@maticbabnik:matrix.org">Matrix</a>
-            </div>
-            <div class="social">
-                matic@babnik.io
-                <br />
-                Matic?#2038
-            </div>
-            <div class="scroll-hint">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="199"
-                    height="185"
-                    fill="none"
-                    viewBox="0 0 199 185"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="24"
-                        d="M187 116.965l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 116.965m175-52.483l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 64.482M187 12l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 12"
-                    />
+        <h1 class="yesscript typewriter" data-text="Matic Babnik"></h1>
+        <div class="social">
+            <a class="social-text" href="https://github.com/MaticBabnik">GitHub</a>
+        </div>
+        <div class="social">
+            <span class="social-text">
+                <svg class="icon">
+                    <use xlink:href="mb.svg#mail" />
                 </svg>
+                matic@babnik.io
+            </span>
+            <span class="social-text">
+                <svg class="icon">
+                    <use xlink:href="mb.svg#discord" />
+                </svg>
+                maticquestionmark
+            </span>
+        </div>
+        <div class="scroll-hint">
+            <svg xmlns="http://www.w3.org/2000/svg" width="199" height="185" fill="none" viewBox="0 0 199 185">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="24"
+                    d="M187 116.965l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 116.965m175-52.483l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 64.482M187 12l-65.649 48.044c-13.011 9.522-30.69 9.522-43.702 0L12 12" />
+            </svg>
+        </div>
+    </div>
+    <div id="content">
+        <p>
+            Living in the year of the (GNU/)Linux desktop. <br>
+            <span title="Kanye reference?">Graduated</span> from <a href="https://www.vegova.si/">Vegova</a>, Currently
+            studying at <a href="https://fri.uni-lj.si/">FRI</a> <br>
+
+        </p>
+        <h2 class="small-title">Posts</h2>
+
+        <div class="hscroll">
+            <div class="shadow left"></div>
+            <div class="shadow right"></div>
+            <div class="posts-container" id="posts">
+                Loading posts...
             </div>
         </div>
-        <div id="content">
-            <p>
-                ~19 years old <br />
-                Currently a student at <a href="https://fri.uni-lj.si/">FRI</a>.
-            </p>
-            <h2 class="small-title">Projects</h2>
-            <div class="projects">
-                <div class="project">
-                    <h3>Sync</h3>
-                    <p class="description">
-                        A (somewhat) shitty way to sync videos with your
-                        friends. Currently supports YouTube, simple hosted video
-                        files and MPEG-DASH.
-                    </p>
-                    <a href="https://github.com/MaticBabnik/shitty-sync"
-                        >Repo</a
-                    >
-                    |
-                    <a href="https://sync.si/">Site</a>
+
+        <h2 class="small-title">Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>Sync</h3>
+                <div class="tech">
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Vue</title>
+                        <use xlink:href="tech.svg#vue" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Javascript</title>
+                        <use xlink:href="tech.svg#js" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Typescript</title>
+                        <use xlink:href="tech.svg#ts" />
+                    </svg>
                 </div>
-                <div class="project">
-                    <h3>Weebify</h3>
-                    <p class="description">An anime "streaming" site.</p>
-                    <a href="https://github.com/Serial-Experiments-Weebify"
-                        >Github</a
-                    >
-                    |
-                    <a href="https://weebify.femboy.si">Site</a>
+
+                <p class="description">
+                    Watch videos together with your friends.
+                </p>
+                <div class="links">
+                    <a href="https://sync.si/">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#globe" />
+                        </svg>
+                        Site
+                    </a>
+                    <a href="https://github.com/MaticBabnik/shitty-sync">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        Repo
+                    </a>
+
                 </div>
-                <div class="project">
-                    <h3>Easistent timetable scaper</h3>
-                    <p class="description">
-                        eAsistent public timetable scraper/graphql API.
-                    </p>
-                    <a href="https://github.com/MaticBabnik/easistent-tt"
-                        >Repo</a
-                    >
-                    |
-                    <a href="https://vegova.sync.si/graphiql">API (V2)</a>
-                    |
-                    <a href="https://vegova.sync.si/graphiql">API (V3)</a>
+            </div>
+            <div class="project">
+                <h3>Weebify</h3>
+
+                <div class="tech">
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Vue</title>
+                        <use xlink:href="tech.svg#vue" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Typescript</title>
+                        <use xlink:href="tech.svg#ts" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>NestJS</title>
+                        <use xlink:href="tech.svg#nest" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>GraphQL</title>
+                        <use xlink:href="tech.svg#graphql" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>MongoDB</title>
+                        <use xlink:href="tech.svg#mongo" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Meilisearch</title>
+                        <use xlink:href="tech.svg#meili" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>FFMPEG</title>
+                        <use xlink:href="tech.svg#ffmpeg" />
+                    </svg>
                 </div>
-                <div class="project">
-                    <h3>timetable-vue</h3>
-                    <p class="description">Frontend for easistent-tt.</p>
-                    <a href="https://github.com/MaticBabnik/timetable-vue"
-                        >Repo</a
-                    >
-                    | <a href="https://v.sync.si">Vegova instance</a>
+                <p class="description">Self-hosted anime streaming service</p>
+                <div class="links">
+                    <a href="https://github.com/Serial-Experiments-Weebify">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        GitHub org
+                    </a>
                 </div>
-                <div class="project">
-                    <h3>WTRChamp</h3>
-                    <p class="description">
-                        Web Trombone Champ. Written in TS, using Vue for menus.
-                    </p>
-                    <a href="https://github.com/MaticBabnik/WTRChamp">Repo</a>
-                    |
-                    <a href="https://wtr.babnik.io">Game</a>
+            </div>
+            <div class="project">
+                <h3>NDIE</h3>
+                <div class="tech">
+
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Vue</title>
+                        <use xlink:href="tech.svg#vue" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Typescript</title>
+                        <use xlink:href="tech.svg#ts" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>C++</title>
+                        <use xlink:href="tech.svg#cpp" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>WebAssembly</title>
+                        <use xlink:href="tech.svg#wasm" />
+                    </svg>
                 </div>
-                <div class="project">
-                    <h3>Bad UEFI</h3>
-                    <p class="description">
-                        Scuffed UEFI video (bad apple) player written in rust.
-                    </p>
-                    <a href="https://github.com/MaticBabnik/bad-uefi">Repo</a>
+                <p class="description">
+                    A simple non Destructive Image Editor.
+                </p>
+                <div class="links">
+                    <a href="https://github.com/MaticBabnik/ndie">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        Repo
+                    </a>
                 </div>
-                <div class="project">
-                    <h3>Kek framework</h3>
-                    <p class="description">
-                        A simple ESP32 Web dashboard framework, Suprisingly fits
-                        a Vue frontend on a microcontroller.
-                    </p>
-                    <a href="https://github.com/MaticBabnik/kek-framework"
-                        >Repo</a
-                    >
+            </div>
+            <div class="project">
+                <h3>Easistent timetable</h3>
+                <div class="tech">
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Vue</title>
+                        <use xlink:href="tech.svg#vue" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Typescript</title>
+                        <use xlink:href="tech.svg#ts" />
+                    </svg>
                 </div>
-                <div class="project">
-                    <h3>oSux</h3>
-                    <p class="description">
-                        The worst Osu! you have ever seen. No sliders, no
-                        spinners, no mods, bad scoring system... It does have
-                        segmentation faults though🙃
-                    </p>
-                    <a href="https://github.com/MaticBabnik/osux">Repo</a>
+
+                <p class="description">
+                    eAsistent's timetable viewer on steroids. With advanced filters and iCal export.
+                </p>
+                <div class="links">
+                    <a href="https://v.sync.si/">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#globe" />
+                        </svg>
+                        Site
+                    </a>
+                    <a href="https://github.com/MaticBabnik/easistent-tt">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        Repo
+                    </a>
                 </div>
-                <div class="project">
-                    <h3>eAsistent+</h3>
-                    <p class="description">
-                        Chrome extension for easistent.com. Enables some of the
-                        plus features for free, adds dark mode, a simpler home
-                        page and some joke features.
-                    </p>
-                    <a href="https://github.com/fubuki-fanclub/ea-sux">Repo</a>
-                    |
-                    <a
-                        href="https://chrome.google.com/webstore/detail/easistent%20/kghgoadkgnipnenlcjamhmiodhohadpp?hl=sl&authuser=0"
-                        >Install (Chrome)</a
-                    >
+            </div>
+            <div class="project">
+                <h3>WTRChamp</h3>
+                <div class="tech">
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Vue</title>
+                        <use xlink:href="tech.svg#vue" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Typescript</title>
+                        <use xlink:href="tech.svg#ts" />
+                    </svg>
+                </div>
+                <p class="description">
+                    Trombone champ clone for the web.
+                </p>
+                <div class="links">
+                    <a href="https://wtr.babnik.io">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#globe" />
+                        </svg>
+                        Play
+                    </a>
+                    <a href="https://github.com/MaticBabnik/WTRChamp">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        Repo
+                    </a>
+                </div>
+            </div>
+            <div class="project">
+                <h3>Bad UEFI</h3>
+                <div class="tech">
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Rust</title>
+                        <use xlink:href="tech.svg#rust" />
+                    </svg>
+                </div>
+                <p class="description">
+                    A "video" "player" that runs in UEFI.
+                </p>
+                <div class="links">
+                    <a href="https://github.com/MaticBabnik/bad-uefi">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        Repo
+                    </a>
+                </div>
+            </div>
+            <div class="project">
+                <h3>Kek framework</h3>
+                <div class="tech">
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Vue</title>
+                        <use xlink:href="tech.svg#vue" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Typescript</title>
+                        <use xlink:href="tech.svg#ts" />
+                    </svg>
+                    <svg class="tech-icon" viewbox="0 0 32 32" +">
+                        <title>C++</title>
+                        <use xlink:href="tech.svg#cpp" />
+                    </svg>
+                </div>
+
+                <p class="description">
+                    A simple ESP32 Smart home framework.
+                </p>
+                <div class="links">
+                    <a href="https://github.com/MaticBabnik/kek-framework">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        Repo
+                    </a>
+                </div>
+            </div>
+            <div class="project">
+                <h3>oSux</h3>
+                <div class="tech">
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>C++</title>
+                        <use xlink:href="tech.svg#cpp" />
+                    </svg>
+                </div>
+                <p class="description">
+                    A very bad Osu! clone written in C++.
+                </p>
+                <div class="links">
+                    <a href="https://github.com/MaticBabnik/osux">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        Repo
+                    </a>
+                </div>
+            </div>
+            <div class="project">
+                <h3>eAsistent+</h3>
+                <div class="tech">
+                    <svg class="tech-icon" viewbox="0 0 32 32">
+                        <title>Javascript</title>
+                        <use xlink:href="tech.svg#js" />
+                    </svg>
+                </div>
+                <p class="description">
+                    Chrome extension for eAsistent (for students).
+                </p>
+                <div class="links">
+                    <a href="https://chrome.google.com/webstore/detail/easistent%20/kghgoadkgnipnenlcjamhmiodhohadpp">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#globe" />
+                        </svg>
+                        Add to Chrome
+                    </a>
+                    <a href="https://github.com/fubuki-fanclub/ea-sux">
+                        <svg viewbox="0 0 32 32">
+                            <use xlink:href="mb.svg#code" />
+                        </svg>
+                        Repo
+                    </a>
                 </div>
             </div>
 
-            <h2 class="small-title">Services</h2>
-            <p>Some of the things I host</p>
-            <ul>
-                <li>
-                    <a href="https://sync.si">Sync</a> - watch videos with your
-                    friends
-                </li>
-                <li>
-                    <a href="https://v0.weebify.tv/">Weebify v0</a> - anime
-                    thing (early alpha)
-                </li>
-                <li>
-                    <a href="https://v.sync.si/">Vegova timetable</a> - a better
-                    timetable viewer for vegova
-                </li>
-                <li>
-                    <a href="https://uptime.sync.si/status/all">Uptime kuma</a>
-                    - status
-                </li>
-            </ul>
-            <h2 class="small-title">Cool people</h2>
-            <ul>
-                <li><a href="https://xn--ijanec-9jb.eu/">šijanec.eu</a></li>
-                <li><a href="https://ass.si/">ass.si</a></li>
-                <li><a href="https://aikenahac.com/">aikenahac.com</a></li>
-                <li><a href="https://blog.skret.net/">blog.skret.net</a></li>
-                <li><a href="https://ziga.kralj.io//">ziga.kralj.io</a></li>
-                <li><a href="https://me.neet.si/">me.neet.si</a></li>
-            </ul>
         </div>
 
-        <span class="footer"
-            >Updated: Oct. 2023 | Theme: Ayu | Font: JetBrains Mono</span
-        >
-    </body>
+        <h2 class="small-title">Infrastructure</h2>
+        <p>
+            Most of my services are deployed on my Contabo VPS (8 vCPU, 30GiB mem).
+            The rest run at home either on a Raspberry Pi or on my trusty ThinkPad T530 "server".
+            <br>
+            <br>
+            <a href="https://uptime.sync.si/status/all">Status page</a>
+        </p>
+
+        <h2 class="small-title">Cool people</h2>
+        <ul>
+            <li><a href="https://xn--ijanec-9jb.eu/">šijanec.eu</a></li>
+            <li><a href="https://ass.si/">ass.si</a></li>
+            <li><a href="https://aikenahac.com/">aikenahac.com</a></li>
+            <li><a href="https://blog.skret.net/">blog.skret.net</a></li>
+            <li><a href="https://ziga.kralj.io//">ziga.kralj.io</a></li>
+            <li><a href="https://me.neet.si/">me.neet.si</a></li>
+        </ul>
+    </div>
+
+    <span class="footer">Updated: Oct. 2023 | Theme: Ayu | Font: JetBrains Mono</span>
+</body>
+
 </html>

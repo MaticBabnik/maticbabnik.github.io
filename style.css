@@ -16,7 +16,7 @@
         --brightRed: #f07171;
         --yellow: #eca944;
         --brightYellow: #f2ae49;
-        --white: #e6e6e6;
+        --white: #f2f2f2;
         --brightWhite: #cfcfcf;
     }
 }
@@ -50,7 +50,7 @@
 }
 
 * {
-    font-family: "JetBrains mono", monospace;
+    font-family: "Montserrat",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--foreground);
 }
 
@@ -65,6 +65,10 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+p {
+    line-height: 1.5rem;
 }
 
 body:not(.js) .yesscript {
@@ -103,6 +107,7 @@ body:not(.js) .social {
 
 a {
     color: var(--yellow);
+    text-decoration: none;
 }
 
 .scroll-hint>svg {
@@ -130,7 +135,9 @@ body:not(.js) .scroll-hint {
 }
 
 #content {
-    max-width: 900px;
+    max-width: 1280px;
+    width: 100%;
+    box-sizing: border-box;
     padding: 20px;
     margin: 0 auto;
 }
@@ -152,29 +159,70 @@ body:not(.js) .scroll-hint {
     }
 }
 
-.project {
-    border: 1px solid var(--brightWhite);
-    border-radius: .5rem;
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit ,minmax(400px, 1fr));
+    gap: .5rem;
     margin: 1rem 0;
-    padding: .5rem;
+}
+
+.project {
+    background-color: var(--white);
+    border-radius: .5rem;
+    padding: 1rem .5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .project:hover {
-    border: 1px solid var(--cyan);
+    /* border: 1px solid var(--cyan); */
     transition: .2s;
 }
 
 .project h3 {
     margin: 0 0 0 0;
+    font-size: 1.5rem;
     color: var(--green);
 }
 
 .project p {
-    margin: 0.5rem 0;
+    margin: 0;
+    flex: 1;
+
 }
 
-.project a {
-    color: var(--cyan)
+.project .links a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+
+    color: var(--brightCyan);
+    border: 1px solid var(--brightCyan);
+    border-radius: .25rem;
+    padding: .25rem;
+    width: fit-content;
+
+    transition: .15s ease-in-out all;
+}
+
+
+.project .links a svg {
+    height: 1rem;
+    width: 1rem;
+    fill: var(--brightCyan);
+    transition: .15s ease-in-out all;
+}
+
+.project .links a:hover {
+    background-color: var(--brightCyan);
+    color: black;
+}
+
+.project .links a:hover svg {
+    fill: black;
 }
 
 .small-title {
@@ -185,7 +233,8 @@ body:not(.js) .scroll-hint {
 /* width */
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
+    height: 4px;
 }
 
 /* Track */
@@ -220,4 +269,122 @@ ul {
 
 .break {
     white-space: break-spaces;
+}
+
+.icon {
+    fill: var(--brightPurple);
+    width: 32px;
+    height: 32px;
+}
+
+.tech-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.social-text {
+    display: block;
+}
+
+.social-text .icon {
+    display: inline;
+    vertical-align: middle;
+    transform: scale(0.75);
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.url-icon {
+    fill: var(--cyan);
+    width: 32px;
+    height: 32px;
+    transform: scale(0.75);
+    display: inline;
+}
+
+.hscroll {
+    position: relative;
+}
+
+.hscroll .shadow {
+    position: absolute;
+    width: 10px;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--background), transparent);
+}
+.shadow.left {
+    left: 0;
+}
+.shadow.right {
+    right: 0;
+    background: linear-gradient(270deg, var(--background), transparent);
+}
+
+.posts-container {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding: 10px;    
+}
+
+.post {
+    scroll-snap-align: center;
+    position: relative;
+    display:  flex;
+    flex-direction: column;
+    width: 300px;
+    flex-shrink: 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.post:hover {
+    background-color: var(--white);
+}
+
+.post h4 {
+    font-size: 1.2rem;
+    margin: 0.4rem 0.2rem ;
+    color: var(--brightBlue);
+}
+
+.post img {
+    width: 100%;
+    aspect-ratio: 1.8;
+    object-fit: cover;
+}
+
+.post p {
+    height: 3rem;
+    text-overflow: ellipsis;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+@supports (line-clamp: 2) {
+    .post p {
+        display: block;
+        line-clamp: 2;
+    }
+}
+
+.post span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
 }
