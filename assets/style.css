@@ -1,0 +1,45 @@
+html {
+    scroll-snap-type: y mandatory;
+    margin: 0;
+    height: 100%;
+
+    scroll-behavior: smooth;
+    scrollbar-color: black transparent;
+    scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+    width: 15px !important;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+.blocklink {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+a {
+    color: black;
+    font-weight: normal;
+    text-decoration: underline;
+    text-underline-position: below;
+    text-underline-offset: 0.3em;
+}
+
+.hover-opacity {
+    opacity: 75%;
+    transition: ease-in-out 0.1s opacity;
+}
+
+.hover-opacity:hover {
+    opacity: 100%;
+}
