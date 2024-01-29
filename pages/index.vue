@@ -77,7 +77,7 @@ h1 {
 h2 {
     font-family: 'Major Mono Display', monospace;
     font-weight: normal;
-    font-size: min(5vw, 48px);
+    font-size: min(7vw, 48px);
     margin: 1rem 0;
 }
 
@@ -86,7 +86,10 @@ h2 {
 
     width: 90%;
     max-width: 1000px;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(/* my grid drained */ 333px, 1fr)
+    );
     grid-auto-rows: 1fr;
     gap: 0.5rem;
 }
