@@ -47,7 +47,7 @@ useSeoMeta({
         <h2 id="blog">Blog</h2>
         <GhostPosts
             base-url="https://blog.babnik.io"
-            api-key="eecf82821bb710e6dd0b947bc7"
+            api-key="f4582edd58d342f977ea5aa6aa"
             :limit="5"
         />
     </LayoutHeroSlide>
