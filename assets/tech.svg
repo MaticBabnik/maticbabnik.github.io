@@ -104,7 +104,8 @@
             fill="black" />
         <path
             d="M16.4333 6.71426L19.9843 0.5H25.5989H31.1371L15.9991 26.992L0.861094 0.5H6.39941H12.014L15.5651 6.71426L15.9992 7.47398L16.4333 6.71426Z"
-            stroke="black" />
+            fill="none"
+            stroke="black" stroke-width="1" />
     </g>
     <g id="wasm">
         <path

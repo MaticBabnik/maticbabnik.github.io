@@ -6,8 +6,14 @@ tech:
     - cpp
     - wasm
 links:
-    repo: https://github.com/MaticBabnik/WTRChamp
-    deployment: https://wtr.babnik.io
+    Repository: https://github.com/MaticBabnik/ndie
+    Web: https://ndie.babnik.io
+images:
+    - desc: Editing workflow
+      src: /img/ndie.avif
 ---
 
-A simple non Destructive Image Editor.
+Non-Destructive Image Editor for your web browser.
+
+Edit images by stacking effects ranging from basic color/brightness correction to custom convolutions.
+The image processing is written in C, optimized with SIMD intrinsics, and compiled to WebAssembly.

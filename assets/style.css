@@ -21,6 +21,16 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+code {
+    font-family: monospace;
+    font-weight: 500;
+    display: block;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background-color: white;
+    border: 1px solid black;
+}
+
 .blocklink {
     display: block;
     text-decoration: none;

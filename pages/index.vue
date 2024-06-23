@@ -7,9 +7,28 @@ const { data: projects } = useAsyncData(() =>
         .find(),
 );
 
+const { data: count } = useAsyncData(() => queryContent('projects').count());
+
 useSeoMeta({
     titleTemplate: 'Matic Babnik',
     description: "Matic Babnik's personal website",
+    ogTitle: 'Matic Babnik',
+    ogDescription: "Matic Babnik's personal website",
+    ogUrl: 'https://babnik.io/',
+    ogImage: '/img/og.png',
+});
+
+useHead({
+    htmlAttrs: {
+        lang: 'en',
+    },
+    link: [
+        {
+            rel: 'icon',
+            type: 'image/png',
+            href: '/favicon.png',
+        },
+    ],
 });
 </script>
 
@@ -17,7 +36,6 @@ useSeoMeta({
 <template>
     <LayoutHeroSlide>
         <h1 id="top">Matic Babnik</h1>
-
         <LayoutHeroLinks>
             <a href="https://github.com/MaticBabnik">GitHub</a>
             <a href="mailto:matic@babnik.io">matic@babnik.io</a>
@@ -25,6 +43,7 @@ useSeoMeta({
                 Discord
             </a>
         </LayoutHeroLinks>
+        <p>Developer, Student @ <a href="https://fri.uni-lj.si/">FRI</a></p>
     </LayoutHeroSlide>
 
     <LayoutHeroSlide>
@@ -39,7 +58,9 @@ useSeoMeta({
                 <ProjectCard :project="p" />
             </a>
 
-            <a href="projects/" class="see-all hover-opacity"> More </a>
+            <a href="/projects" class="see-all hover-opacity">
+                See all ({{ count }})
+            </a>
         </div>
     </LayoutHeroSlide>
 
@@ -53,7 +74,7 @@ useSeoMeta({
     </LayoutHeroSlide>
 
     <LayoutHeroSlide>
-        <h2 id="misc">Shoutouts</h2>
+        <h2 id="misc">Friends online</h2>
         <ul>
             <li><a href="https://ass.si/">ass.si</a></li>
             <li><a href="https://gapi.me/">gapi.me</a></li>
@@ -61,7 +82,6 @@ useSeoMeta({
             <li><a href="https://studen.me/">studen.me</a></li>
             <li><a href="https://ziga.kralj.io/">ziga.kralj.io</a></li>
             <li><a href="https://aikenahac.com/">aikenahac.com</a></li>
-            <li>(you)?</li>
         </ul>
     </LayoutHeroSlide>
 </template>
