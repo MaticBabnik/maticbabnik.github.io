@@ -107,6 +107,7 @@ h1 svg {
     width: 100%;
     border-bottom: 2px solid black;
     display: flex;
+    gap: 1rem;
     flex-direction: row;
     justify-content: start;
 }

@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .links {
     display: inline-flex;
     justify-content: center;
