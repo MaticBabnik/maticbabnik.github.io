@@ -39,7 +39,7 @@ function render() {
     mat4.perspective(
         cam,
         (75 * Math.PI) / 180,
-        canvas.value!.width / canvas.value!.height,
+        gl.canvas.width / gl.canvas.height,
         0.1,
         100.0,
     );
@@ -47,6 +47,7 @@ function render() {
 
     const targetZ = (window.scrollY / document.body.scrollHeight) * 50;
     mat4.translate(cam, cam, [0, 0, (z = lerp(z, targetZ, 0.1))]);
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     geometry.forEach((x) => x.draw(gl, cam));
