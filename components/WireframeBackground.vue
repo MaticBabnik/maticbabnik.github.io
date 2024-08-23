@@ -3,126 +3,134 @@
 </template>
 
 <script lang="ts" setup>
+import { useResizeObserver } from '@vueuse/core';
+import { mat4 } from 'gl-matrix';
 import {
-    Color,
-    Euler,
-    FogExp2,
-    InstancedMesh,
-    Matrix4,
-    Mesh,
-    MeshBasicMaterial,
-    PerspectiveCamera,
-    PlaneGeometry,
-    Quaternion,
-    Scene,
-    Vector3,
-    WebGLRenderer,
-} from 'three';
+    err,
+    GlArrayBuffer,
+    LineGeometry,
+    Program,
+    buildGridData,
+    lerp,
+} from './gl';
 
 const canvas = ref<HTMLCanvasElement | null>(null);
 
-let renderer: WebGLRenderer;
-let camera: PerspectiveCamera;
-let scene: Scene;
 let mounted = false;
+let geometry: LineGeometry[];
+let gl: WebGL2RenderingContext;
 
-function resizeRenderer() {
-    const canvas = renderer.domElement;
-    const pixelRatio = window.devicePixelRatio;
-    const width = canvas.clientWidth * pixelRatio;
-    const height = canvas.clientHeight * pixelRatio;
-    const needResize = canvas.width !== width || canvas.height !== height;
+useResizeObserver(
+    canvas,
+    ([
+        {
+            contentRect: { width, height },
+        },
+    ]) => {
+        canvas.value!.width = width;
+        canvas.value!.height = height;
+    },
+);
 
-    if (needResize) {
-        renderer.setSize(width, height, false);
-    }
-
-    return needResize;
-}
+let z = 0;
 
 function render() {
-    if (resizeRenderer()) {
-        const canvas = renderer.domElement;
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-    }
-    camera.position.lerp(
-        new Vector3(0, 0, -2 * (window.scrollY / window.innerHeight)),
+    const cam = mat4.create();
+    mat4.perspective(
+        cam,
+        (75 * Math.PI) / 180,
+        canvas.value!.width / canvas.value!.height,
         0.1,
+        100.0,
     );
-    renderer.render(scene, camera);
+    // mat4.rotateX(cam, cam, 0.15);
+
+    const targetZ = (window.scrollY / document.body.scrollHeight) * 50;
+    mat4.translate(cam, cam, [0, 0, (z = lerp(z, targetZ, 0.1))]);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    geometry.forEach((x) => x.draw(gl, cam));
 
     mounted && requestAnimationFrame(render);
 }
 
 onMounted(() => {
-    if (!canvas.value) {
-        return;
-    }
     mounted = true;
+    const p = new Program(
+        /* glsl */ `
+    precision lowp float;
 
-    renderer = new WebGLRenderer({
-        antialias: true,
-        canvas: canvas.value,
-        powerPreference: 'low-power',
-        depth: false, // fucks up the rendering a bit, but I fw it
-        precision: 'lowp',
-    });
-    camera = new PerspectiveCamera(60, 2, 0.1, 3);
-    camera.position.z = 2;
+    attribute vec4 position;
+    uniform mat4 projectionMatrix;
+    uniform mat4 modelViewMatrix;
+    varying float vDistance;
 
-    scene = new Scene();
-    scene.background = new Color(0xffffff);
-    scene.fog = new FogExp2(0xffffff, 1);
+    void main(void) {
+        vec4 mvPosition = projectionMatrix * modelViewMatrix * position;
+        vDistance = mvPosition.z; // pass the distance to frag shader
+        gl_Position = mvPosition;
+    }
+    `,
+        /* glsl */ `
+    precision lowp float;
 
-    const wireframe = new MeshBasicMaterial({
-        color: 0,
-        wireframe: true,
-        wireframeLinewidth: 2,
-    });
+    varying float vDistance;
 
-    {
-        const mountainGeometry = new PlaneGeometry(1, 10, 10, 100);
-        const b = mountainGeometry.attributes.position.array;
+    void main(void) {
+        gl_FragColor = vec4(vec3(pow(vDistance / 15.0, 1.5)), 1.0); // fog
+    }
+    `,
+    );
 
-        for (let i = 2; i < b.length; i += 3) {
-            const x = b[i - 2];
-            const xx = 1.2 * (x + 0.5);
-            b[i] =
-                -Math.max(xx ** 2 - 0.6 * xx ** 3, 0) +
-                ((Math.random() - 0.7) / 5) * (x + 0.5); // make it look like a mountain
+    function buildGeometry(gl: WebGL2RenderingContext) {
+        function noise(x: number, y: number) {
+            return Math.sin(x * y + x + y);
         }
 
-        const mountains = new InstancedMesh(mountainGeometry, wireframe, 2);
-
-        const matrix = new Matrix4(); // cyka matrix
-        const position = new Vector3(1, -0.3, -3);
-        const rotation = new Quaternion().setFromEuler(
-            new Euler(Math.PI / 2, 0, 0),
+        const roadBuf = new GlArrayBuffer(buildGridData(5, 50));
+        const sideBuf = new GlArrayBuffer(
+            buildGridData(10, 50, (x, y) => {
+                return x / 10 + (x / 5) * (noise(x, y) / 3 + 0.1 + y / 50);
+            }),
         );
-        const scale = new Vector3(1, 1, 1);
 
-        mountains.setMatrixAt(0, matrix.compose(position, rotation, scale));
-        position.x = scale.x = -1; // flip x
-        mountains.setMatrixAt(1, matrix.compose(position, rotation, scale));
-        scene.add(mountains);
+        const roadMtx = mat4.create();
+        mat4.fromTranslation(roadMtx, [-2.5, -3, 0]);
+        mat4.rotateX(roadMtx, roadMtx, -Math.PI / 2);
+
+        const sideMtx = mat4.create();
+        mat4.fromTranslation(sideMtx, [2.5, -3, 0]);
+        mat4.rotateX(sideMtx, sideMtx, -Math.PI / 2);
+
+        const sideMtx2 = mat4.create();
+        mat4.fromTranslation(sideMtx2, [-2.5, -3, 0]);
+        mat4.rotateX(sideMtx2, sideMtx2, -Math.PI / 2);
+        mat4.scale(sideMtx2, sideMtx2, [-1, 1, 1]);
+
+        roadBuf.push(gl);
+        sideBuf.push(gl);
+
+        return [
+            new LineGeometry(roadMtx, roadBuf, p, 2),
+            new LineGeometry(sideMtx, sideBuf, p, 1),
+            new LineGeometry(sideMtx2, sideBuf, p, 1),
+        ];
     }
 
-    {
-        const roadGeometry = new PlaneGeometry(1, 10, 5, 50); // tbh I should instance this too
-        const road = new Mesh(roadGeometry, wireframe);
-        road.position.z -= 3;
-        road.rotateX(Math.PI / 2);
-        road.position.y = -0.3;
-        scene.add(road);
-    }
+    const c = canvas.value!;
+    c.width = c.clientWidth;
+    c.height = c.clientHeight;
 
-    render();
+    gl = c.getContext('webgl2') ?? err('No WebGL');
+    p.compile(gl);
+
+    geometry = buildGeometry(gl);
+
+    requestAnimationFrame(render);
 });
 
 onUnmounted(() => {
     mounted = false;
-    renderer?.dispose();
 });
 </script>
 
