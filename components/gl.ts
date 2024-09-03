@@ -157,7 +157,7 @@ export class LineGeometry {
         );
 
         gl.lineWidth(this.lineWidth);
-        gl.drawArrays(gl.LINES, 0, this.geometry.data.length);
+        gl.drawArrays(gl.LINES, 0, this.geometry.data.length / 3);
     }
 }
 

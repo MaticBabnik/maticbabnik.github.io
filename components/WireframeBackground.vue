@@ -123,6 +123,8 @@ onMounted(() => {
     c.height = c.clientHeight;
 
     gl = c.getContext('webgl2') ?? err('No WebGL');
+    gl.enable(gl.DEPTH_TEST)
+    gl.depthFunc(gl.LESS)
     p.compile(gl);
 
     geometry = buildGeometry(gl);
