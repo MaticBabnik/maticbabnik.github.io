@@ -32,15 +32,14 @@ defineProps<{
 
 <style scoped>
 article {
-    display: block;
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
     padding: 0.5rem;
 
-    box-sizing: border-box;
-    height: 100%;
-
-    border: 1px solid black;
-    border-radius: 0.5rem;
-    background-color: white;
+    border-top: 1px solid black;
+    backdrop-filter: blur(5px);
+    background-color: #fff8;
 }
 
 h3 {

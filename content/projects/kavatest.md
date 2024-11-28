@@ -2,7 +2,7 @@
 title: KavaTest
 tech: [] # TODO: add csharp
 links:
-    Repository: https://github.com/MaticBabnik/badhal
+    Repository: https://github.com/MaticBabnik/kavatest
 images:
     - desc: Kavatest displaying a diff on fail
       src: /img/kavatest.avif

@@ -43,24 +43,27 @@ useHead({
                 Discord
             </a>
         </LayoutHeroLinks>
-        <p>Developer, Student @ <a href="https://fri.uni-lj.si/">FRI</a></p>
+        <p>
+            Dev @ <a href="https://www.spica.com/">Spica</a> | Student @
+            <a href="https://fri.uni-lj.si/">FRI</a>
+        </p>
     </LayoutHeroSlide>
 
     <LayoutHeroSlide>
         <h2 id="projects">Projects</h2>
         <div class="project-list">
-            <a
+            <NuxtLink
                 v-for="p in projects ?? []"
                 :key="p._path"
                 :href="p._path"
-                class="blocklink hover-opacity"
+                class="blocklink"
             >
                 <ProjectCard :project="p" />
-            </a>
+            </NuxtLink>
 
-            <a href="/projects" class="see-all hover-opacity">
+            <NuxtLink href="/projects" class="see-all">
                 See all ({{ count }})
-            </a>
+            </NuxtLink>
         </div>
     </LayoutHeroSlide>
 
@@ -68,7 +71,7 @@ useHead({
         <h2 id="blog">Blog</h2>
         <GhostPosts
             base-url="https://blog.babnik.io"
-            api-key="f4582edd58d342f977ea5aa6aa"
+            api-key="89421edd450efd53a52a368eb3"
             :limit="5"
         />
     </LayoutHeroSlide>
@@ -76,12 +79,12 @@ useHead({
     <LayoutHeroSlide>
         <h2 id="misc">Friends online</h2>
         <ul>
+            <li><a href="https://aiken.si/">aiken.si</a></li>
             <li><a href="https://ass.si/">ass.si</a></li>
             <li><a href="https://gapi.me/">gapi.me</a></li>
             <li><a href="https://skret.net/">skret.net</a></li>
             <li><a href="https://studen.me/">studen.me</a></li>
             <li><a href="https://ziga.kralj.io/">ziga.kralj.io</a></li>
-            <li><a href="https://aikenahac.com/">aikenahac.com</a></li>
         </ul>
     </LayoutHeroSlide>
 </template>
@@ -123,10 +126,14 @@ ul li {
 }
 .see-all {
     display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0.5rem;
 
-    border: 1px solid black;
-    border-radius: 0.5rem;
+    border-top: 1px solid black;
+    backdrop-filter: blur(5px);
+    background-color: #fff8;
 }
 </style>

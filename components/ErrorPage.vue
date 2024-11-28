@@ -4,7 +4,7 @@
         <slot>
             <h1>Under construction</h1>
         </slot>
-        <a href="/" @click.capture="back">Go back</a>
+        <NuxtLink href="/" @click.capture="back">Go back</NuxtLink>
         <div class="tape" />
     </div>
 </template>

@@ -126,7 +126,7 @@ function timeAgo(t: number | string | Date) {
     padding: 0.5rem;
 
     border-top: 1px solid black;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
 }
 
 .article .title {
