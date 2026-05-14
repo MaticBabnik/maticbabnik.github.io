@@ -5,17 +5,22 @@ import ImageContainer from '~/components/ImageContainer.vue';
 const route = useRoute();
 
 const { data: article } = useAsyncData(`proj-${route.params.slug}`, () =>
-    queryContent(route.path).findOne(),
+    queryCollection('projects').path(route.path).first(),
 );
 
 const { data: nav } = useAsyncData(`proj-${route.params.slug}-nav`, () =>
-    queryContent()
-        .only(['_path', 'title'])
-        .sort({ feature: 1 })
-        .findSurround(route.path),
+    queryCollectionItemSurroundings('projects', route.path, {
+        fields: ['title'],
+    }).order('feature', 'ASC'),
 );
 
-useContentHead(article);
+useSeoMeta({
+    title: () => article.value?.title,
+    description: () => article.value?.description,
+    ogTitle: () => article.value?.title,
+    ogDescription: () => article.value?.description,
+    // ogImage: () => article.value?.images?.[0],
+});
 </script>
 
 <!-- eslint-disable vue/no-multiple-template-root -->
@@ -23,14 +28,14 @@ useContentHead(article);
     <div class="wrapper">
         <div class="proj">
             <div class="content-nav">
-                <NuxtLink replace v-if="nav?.[0]" :to="nav?.[0]._path">
+                <NuxtLink replace v-if="nav?.[0]" :to="nav?.[0].path">
                     Previous: {{ nav?.[0].title }}
                 </NuxtLink>
 
                 <NuxtLink
                     replace
                     v-if="nav?.[1]"
-                    :to="nav?.[1]._path"
+                    :to="nav?.[1].path"
                     class="next"
                 >
                     Next: {{ nav?.[1].title }}
@@ -57,7 +62,7 @@ useContentHead(article);
                         >{{ k }}</a
                     >
                 </div>
-                <ContentRenderer :value="article" />
+                <ContentRenderer :value="article!" />
                 <ImageContainer
                     v-if="article?.images"
                     :images="article.images"

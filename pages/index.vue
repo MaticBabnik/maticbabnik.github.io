@@ -1,13 +1,13 @@
 <script setup lang="ts">
 const { data: projects } = useAsyncData(() =>
-    queryContent('projects')
-        .only(['title', 'description', 'tech', '_path'])
-        .where({ feature: { $gt: 0 } })
-        .sort({ feature: 1 })
-        .find(),
+    queryCollection('projects')
+        .select('title', 'description', 'tech', 'path', 'feature')
+        .where('feature', '>', 0)
+        .order('feature', 'ASC')
+        .all(),
 );
 
-const { data: count } = useAsyncData(() => queryContent('projects').count());
+const { data: count } = useAsyncData(() => queryCollection('projects').count());
 
 useSeoMeta({
     titleTemplate: 'Matic Babnik',
@@ -36,7 +36,7 @@ useHead({
 <template>
     <LayoutHeroSlide>
         <h1 id="top">Matic Babnik</h1>
-        <LayoutHeroLinks>
+        <LayoutHeroLinks data-nosnippet>
             <a href="https://github.com/MaticBabnik">GitHub</a>
             <a href="mailto:matic@babnik.io">matic@babnik.io</a>
             <a href="https://discordapp.com/users/331092902677577729">
@@ -44,18 +44,17 @@ useHead({
             </a>
         </LayoutHeroLinks>
         <p>
-            Dev @ <a href="https://www.spica.com/">Spica</a> | Student @
-            <a href="https://fri.uni-lj.si/">FRI</a>
+            Human from Slovenia | Studying CompSci @ <a href="https://fri.uni-lj.si/">FRI</a>
         </p>
     </LayoutHeroSlide>
 
-    <LayoutHeroSlide>
+    <LayoutHeroSlide dark>
         <h2 id="projects">Projects</h2>
         <div class="project-list">
             <NuxtLink
                 v-for="p in projects ?? []"
-                :key="p._path"
-                :href="p._path"
+                :key="p.path"
+                :href="p.path"
                 class="blocklink"
             >
                 <ProjectCard :project="p" />
@@ -76,30 +75,42 @@ useHead({
         />
     </LayoutHeroSlide>
 
-    <LayoutHeroSlide>
-        <h2 id="misc">Friends online</h2>
-        <ul>
-            <li><a href="https://aiken.si/">aiken.si</a></li>
-            <li><a href="https://ass.si/">ass.si</a></li>
-            <li><a href="https://gapi.me/">gapi.me</a></li>
-            <li><a href="https://skret.net/">skret.net</a></li>
-            <li><a href="https://studen.me/">studen.me</a></li>
-            <li><a href="https://ziga.kralj.io/">ziga.kralj.io</a></li>
-        </ul>
+    <LayoutHeroSlide dark>
+        <div class="links-split">
+            <div class="links">
+                <h2 id="misc">Webring</h2>
+                <ul>
+                    <li><a href="https://aiken.si/">aiken.si</a></li>
+                    <li><a href="https://ass.si/">ass.si</a></li>
+                    <li><a href="https://sijanec.eu/">sijanec.eu</a></li>
+                    <li><a href="https://ziga.kralj.io/">ziga.kralj.io</a></li>
+                </ul>
+            </div>
+            <div class="links">
+                <h2 id="misc">shoutout</h2>
+                <ul>
+                    <li><a href="https://mirror.tux.si/">mirror.tux.si (arch btw)</a></li>
+                    <li><a href="https://leftclick.si/">leftclick hackerspace</a></li>
+                    <li><a href="https://brezavta.si/">brezavta</a></li>
+                </ul>
+            </div>
+        </div>
     </LayoutHeroSlide>
 </template>
 
 <style scoped>
-h1 {
+h1, h2 {
     font-family: 'Major Mono Display', monospace;
     font-weight: normal;
+    color: var(--c-text)
+}
+
+h1 {
     font-size: min(10vw, 96px);
     margin: 2rem 0;
 }
 
 h2 {
-    font-family: 'Major Mono Display', monospace;
-    font-weight: normal;
     font-size: min(7vw, 48px);
     margin: 1rem 0;
 }
@@ -134,6 +145,24 @@ ul li {
 
     border-top: 1px solid black;
     backdrop-filter: blur(5px);
-    background-color: #fff8;
+    background-color: color-mix(in srgb, var(--c-bg) 20%, #0000);
+}
+
+.links-split {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.links-split h2 {
+    font-size: 48px;
+}
+
+@media (max-width: 800px) {
+    .links-split {
+        flex-direction: column;
+        gap: 2rem;
+    }
 }
 </style>

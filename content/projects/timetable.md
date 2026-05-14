@@ -1,6 +1,6 @@
 ---
 title: eAsistent timetable
-feature: 3
+feature: 4
 tech:
     - vue
     - ts

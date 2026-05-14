@@ -20,6 +20,10 @@ useHead({
             type: 'image/png',
             href: '/favicon.png',
         },
+        {
+            rel: 'me',
+            href: 'https://toot.si/@matic'
+        }
     ],
 });
 </script>

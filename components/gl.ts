@@ -75,7 +75,7 @@ export class Program {
         gl[`uniform${type}`](ul, transpose, value, ...range);
     }
 
-    public uniformUi<T extends 1 | 2 | 3 | 4>(
+    public uniformf<T extends 1 | 2 | 3 | 4>(
         gl: WebGL2RenderingContext,
         n: T,
         uniform: string,
@@ -91,7 +91,7 @@ export class Program {
             this._program ?? err("linkedn't"),
             uniform,
         );
-        (gl[`uniform${n}ui`] as any)(ul, ...(value as any as number[]));
+        (gl[`uniform${n}f`] as any)(ul, ...(value as any as number[]));
     }
 }
 
@@ -123,7 +123,7 @@ export class LineGeometry {
         public lineWidth: number = 1,
     ) {}
 
-    draw(gl: GL, projectionMatrix: mat4) {
+    draw(gl: GL, projectionMatrix: mat4, opacity: number) {
         const positionAttribLocation = gl.getAttribLocation(
             this.program.program,
             'position',
@@ -157,6 +157,7 @@ export class LineGeometry {
         );
 
         gl.lineWidth(this.lineWidth);
+        this.program.uniformf(gl, 1, 'opacity', opacity);
         gl.drawArrays(gl.LINES, 0, this.geometry.data.length / 3);
     }
 }

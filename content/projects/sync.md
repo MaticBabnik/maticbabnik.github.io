@@ -6,8 +6,10 @@ tech:
     - js
     - ts
 links:
-    Repository: https://github.com/MaticBabnik/shitty-sync
     Web: https://sync.si/
+    Repository: https://github.com/MaticBabnik/shitty-sync
+    'Web (v3 preview)': https://v3.sync.si/
+    'Repository (v3)': https://github.com/sync-si/sync
 images:
     - desc: Sync room
       src: /img/sync.avif

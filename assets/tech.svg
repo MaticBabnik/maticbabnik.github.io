@@ -118,4 +118,11 @@
             d="M7.43311 17.2449H9.55389L11.0017 24.9557H11.0279L12.768 17.2449H14.7518L16.3236 25.0504H16.3544L18.0046 17.2449H20.0846L17.3819 28.5751H15.2773L13.7186 20.8642H13.6778L12.0093 28.5751H9.86552L7.43311 17.2449Z"
             fill="white" />
     </g>
+    <g id="webgpu">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M29.0834 10L26.175 5H32L29.0834 10Z" fill="black"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M29.0834 4.79353e-05L26.175 5.00005H32L29.0834 4.79353e-05Z" fill="black"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.2671 20L17.4503 10L29.0838 9.9999L23.2671 20Z" fill="black"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.2671 0L17.4503 10L29.0838 9.9999L23.2671 0Z" fill="black"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6335 20L0 0H23.2666L11.6335 20Z" fill="black"/>
+    </g>
 </svg>

@@ -19,22 +19,20 @@ const canvas = ref<HTMLCanvasElement | null>(null);
 let mounted = false;
 let geometry: LineGeometry[];
 let gl: WebGL2RenderingContext;
+let initTime = 0;
 
-useResizeObserver(
-    canvas,
-    ([
-        {
-            contentRect: { width, height },
-        },
-    ]) => {
-        canvas.value!.width = width;
-        canvas.value!.height = height;
-    },
-);
+useResizeObserver(canvas, (entries) => {
+    if (!entries[0]) return;
+    const cr = entries[0].contentRect;
+    canvas.value!.width = cr.width * window.devicePixelRatio;
+    canvas.value!.height = cr.height * window.devicePixelRatio;
+});
 
 let z = 0;
 
 function render() {
+    const opacity = Math.min(1, (Date.now() - initTime) / 100);
+
     const cam = mat4.create();
     mat4.perspective(
         cam,
@@ -49,8 +47,7 @@ function render() {
     mat4.translate(cam, cam, [0, 0, (z = lerp(z, targetZ, 0.1))]);
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-    geometry.forEach((x) => x.draw(gl, cam));
+    geometry.forEach((x) => x.draw(gl, cam, opacity));
 
     mounted && requestAnimationFrame(render);
 }
@@ -76,9 +73,10 @@ onMounted(() => {
     precision lowp float;
 
     varying float vDistance;
+    uniform float opacity;
 
     void main(void) {
-        gl_FragColor = vec4(vec3(pow(vDistance / 15.0, 1.5)), 1.0); // fog
+        gl_FragColor = vec4(vec3(pow(vDistance / 15.0, 1.5)), opacity); // fog
     }
     `,
     );
@@ -119,16 +117,17 @@ onMounted(() => {
     }
 
     const c = canvas.value!;
-    c.width = c.clientWidth;
-    c.height = c.clientHeight;
+    c.width = c.clientWidth * window.devicePixelRatio;
+    c.height = c.clientHeight * window.devicePixelRatio;
 
     gl = c.getContext('webgl2') ?? err('No WebGL');
-    gl.enable(gl.DEPTH_TEST)
-    gl.depthFunc(gl.LESS)
+    gl.enable(gl.DEPTH_TEST);
+    gl.depthFunc(gl.LESS);
     p.compile(gl);
 
     geometry = buildGeometry(gl);
 
+    initTime = Date.now();
     requestAnimationFrame(render);
 });
 

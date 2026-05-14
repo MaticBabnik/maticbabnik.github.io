@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    compatibilityDate: '2026-04-20',
+
+
     ssr: true,
     site: {
         url: 'https://babnik.io',
@@ -29,9 +32,7 @@ export default defineNuxtConfig({
             'Major Mono Display': true,
         },
     },
-    content: {
-        contentHead: true,
-        locales: ['en'],
-        defaultLocale: 'en',
-    },
+    ogImage: {
+        zeroRuntime: true,
+    }
 });

@@ -1,3 +1,8 @@
+:root {
+    --c-text: black;
+    --c-bg: white;
+}
+
 html {
     scroll-snap-type: y mandatory;
     margin: 0;
@@ -21,24 +26,29 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-code {
+pre code {
     font-family: monospace;
     font-weight: 500;
     display: block;
     padding: 0.5em;
     border-radius: 0.5em;
-    background-color: white;
-    border: 1px solid black;
+    background-color: var(--c-bg);
+    border: 1px solid var(--c-text);
+}
+
+code, code * {
+    font-family: monospace;
+    font-weight: 500;
 }
 
 .blocklink {
     display: block;
     text-decoration: none;
-    color: black;
+    color: var(--c-text);
 }
 
 a {
-    color: black;
+    color: var(--c-text);
     font-weight: normal;
     text-decoration: underline;
     text-underline-position: below;

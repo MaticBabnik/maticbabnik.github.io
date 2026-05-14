@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const { data: projects } = useAsyncData(() =>
-    queryContent('projects')
-        .only(['title', 'description', 'tech', '_path'])
-        .sort({ feature: 1 })
-        .find(),
+    queryCollection('projects')
+        .select('title', 'description', 'tech', 'path')
+        .order('feature', 'ASC')
+        .all(),
 );
 
 useSeoMeta({
@@ -22,8 +22,8 @@ useSeoMeta({
         <div class="project-list">
             <a
                 v-for="p in projects ?? []"
-                :key="p._path"
-                :href="p._path"
+                :key="p.path"
+                :href="p.path"
                 class="blocklink hover-opacity"
             >
                 <ProjectCard :project="p" />

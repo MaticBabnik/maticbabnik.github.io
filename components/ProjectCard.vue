@@ -37,9 +37,9 @@ article {
     flex-direction: column;
     padding: 0.5rem;
 
-    border-top: 1px solid black;
+    background-color: color-mix(in srgb, var(--c-bg) 20%, #0000);
+    border-top: 1px solid var(--c-text);
     backdrop-filter: blur(5px);
-    background-color: #fff8;
 }
 
 h3 {
@@ -66,6 +66,10 @@ h3 {
 
 .tech svg use {
     transform: scale(0.5);
+}
+
+:global(.dark .tech svg) {
+    filter: invert(1);
 }
 
 p {
