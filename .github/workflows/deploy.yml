@@ -8,16 +8,15 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
             - run: corepack enable
-            - uses: actions/setup-node@v3
+            - uses: actions/setup-node@v6
               with:
-                node-version: '24'
-            # Pick your own package manager and build script
+                node-version: '26'
             - run: npm install
             - run: npm run generate
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v1
+              uses: actions/upload-pages-artifact@v5
               with:
                   path: ./.output/public
 

@@ -34,5 +34,8 @@ export default defineNuxtConfig({
     },
     ogImage: {
         zeroRuntime: true,
+    },
+    sitemap: {
+        zeroRuntime: true,
     }
 });
