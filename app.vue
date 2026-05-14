@@ -2,6 +2,8 @@
     <NuxtLayout>
         <NuxtPage />
     </NuxtLayout>
+    <!--hello-->
+    <a rel="me" href="https://toot.si/@matic" style="display: none">Mastodon</a>
 </template>
 
 <script lang="ts" setup>
@@ -19,10 +21,6 @@ useHead({
             rel: 'icon',
             type: 'image/png',
             href: '/favicon.png',
-        },
-        {
-            rel: 'me',
-            href: 'https://toot.si/@matic'
         }
     ],
 });
