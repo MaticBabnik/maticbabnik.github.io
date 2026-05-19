@@ -45,9 +45,12 @@ function render() {
 
     const targetZ = (window.scrollY / document.body.scrollHeight) * 50;
     mat4.translate(cam, cam, [0, 0, (z = lerp(z, targetZ, 0.1))]);
-    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    geometry.forEach((x) => x.draw(gl, cam, opacity));
+
+    try {
+        gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        geometry.forEach((x) => x.draw(gl, cam, opacity));
+    } catch {}
 
     mounted && requestAnimationFrame(render);
 }
@@ -120,15 +123,24 @@ onMounted(() => {
     c.width = c.clientWidth * window.devicePixelRatio;
     c.height = c.clientHeight * window.devicePixelRatio;
 
-    gl = c.getContext('webgl2') ?? err('No WebGL');
-    gl.enable(gl.DEPTH_TEST);
-    gl.depthFunc(gl.LESS);
-    p.compile(gl);
+    try {
+        if (gl) {
+            requestAnimationFrame(render);
+            return;
+        }
 
-    geometry = buildGeometry(gl);
+        gl = c.getContext('webgl2') ?? err('No WebGL');
+        gl.enable(gl.DEPTH_TEST);
+        gl.depthFunc(gl.LESS);
+        p.compile(gl);
 
-    initTime = Date.now();
-    requestAnimationFrame(render);
+        geometry = buildGeometry(gl);
+
+        initTime = Date.now();
+        requestAnimationFrame(render);
+    } catch (e) {
+        console.error(e);
+    }
 });
 
 onUnmounted(() => {
